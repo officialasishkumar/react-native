@@ -248,7 +248,11 @@ export const Layout = ({
               <View style={desktopLogoContainer}>
                 <StorybookLogo theme={theme} />
 
-                <IconButton onPress={() => setDesktopSidebarOpen(false)} Icon={MenuIcon} />
+                <IconButton
+                  onPress={() => setDesktopSidebarOpen(false)}
+                  Icon={MenuIcon}
+                  accessibilityLabel="Close sidebar"
+                />
               </View>
 
               <Sidebar
@@ -263,7 +267,11 @@ export const Layout = ({
               />
             </ScrollView>
           ) : (
-            <IconButton onPress={() => setDesktopSidebarOpen(true)} Icon={MenuIcon} />
+            <IconButton
+              onPress={() => setDesktopSidebarOpen(true)}
+              Icon={MenuIcon}
+              accessibilityLabel="Open sidebar"
+            />
           )}
         </View>
       ) : null}
@@ -275,6 +283,8 @@ export const Layout = ({
           <TouchableOpacity
             style={fullScreenButtonStyle}
             onPress={() => setUiHidden((prev) => !prev)}
+            accessibilityRole="button"
+            accessibilityLabel={uiHidden ? 'Exit fullscreen' : 'Enter fullscreen'}
           >
             {uiHidden ? (
               <CloseFullscreenIcon color={theme.color.mediumdark} />
@@ -297,6 +307,7 @@ export const Layout = ({
                 style={iconFloatRightStyle}
                 onPress={() => setDesktopAddonsPanelOpen(true)}
                 Icon={BottomBarToggleIcon}
+                accessibilityLabel="Open addons panel"
               />
             )}
           </View>
@@ -311,6 +322,8 @@ export const Layout = ({
               style={navButtonStyle}
               hitSlop={navButtonHitSlop}
               onPress={openMobileMenu}
+              accessibilityRole="button"
+              accessibilityLabel="Open story list"
             >
               <MenuIcon color={theme.color.mediumdark} />
               <Text style={navButtonTextStyle} numberOfLines={1}>
